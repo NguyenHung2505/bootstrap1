@@ -11,6 +11,11 @@
     <title>Title</title>
 </head>
 <body>
+<form action="linkday123" method="get">
+    <input type="text" name="use">
+    <input type="password" name="pass">
+    <button> bam</button>
 
+</form>
 </body>
 </html>
