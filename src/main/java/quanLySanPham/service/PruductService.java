@@ -1,20 +1,20 @@
 package quanLySanPham.service;
 
+import java.util.List;
 import quanLySanPham.model.Product;
 
-import java.util.List;
-
 public interface PruductService {
-    List<Product> findAll ();
-    void save (Product product);
+    List<Product> findAll();
 
-    int findIndexByid(int id);
+    void save(Product var1);
 
-    Product findByid(int id);
+    int findIndexByid(int var1);
 
-    List<Product> finByName(String name);
+    Product findByid(int var1);
 
-    void update(int id , Product product);
+    List<Product> finByName(String var1);
 
-    void delete(int id);
+    void update(int var1, Product var2);
+
+    void delete(int var1);
 }

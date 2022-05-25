@@ -24,9 +24,20 @@ public class ProductServlet3 extends HttpServlet {
             case "edit":
                 showEditForm(request,response);
                 break;
+            case "delete":
+                showdeleteForm(request,response);
+                break;
             default:
                 showListPage(request,response);
         }
+    }
+
+    private void showdeleteForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("product/delete.jsp");
+        int id = Integer.parseInt(request.getParameter("id"));
+        Product product = productService.findByid(id);
+        request.setAttribute("spCanXoa",product);
+        requestDispatcher.forward(request,response);
     }
 
     private void showEditForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -63,7 +74,16 @@ public class ProductServlet3 extends HttpServlet {
             case "edit":
                 editProduct (request, response);
                 break;
+            case "delete":
+               deleteProduct(request,response);
+               break;
         }
+    }
+
+    private void deleteProduct(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        productService.delete(id);
+        response.sendRedirect("/productList");
     }
 
     private void editProduct(HttpServletRequest request, HttpServletResponse response) throws IOException {

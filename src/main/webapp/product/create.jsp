@@ -11,14 +11,15 @@
     <title>Title</title>
 </head>
 <body>
-<%--noi can hoi . tao sao ko the chi den link chi tiet--%>
-<form method="post">
-    <input type="number" name="id">
-    <input type="text" name="name">
-    <input type="number" name="price">
-    <button>tao!</button>
+<form action="/productList?action=create" method="post">
+    <input type="number" name="id" placeholder="enter in id"> <br>
+    <br>
+    <input type="text" name="name" placeholder="enter in name"><br>
+    <br>
+    <input type="number" name="price" placeholder="enter in price"><br>
+    <br>
+    <button>Click!</button>
 </form>
-    
-</form>
+
 </body>
 </html>

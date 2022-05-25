@@ -1,67 +1,65 @@
 package quanLySanPham.service;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import quanLySanPham.model.Product;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class ProductServiceImpl implements PruductService{
-    List<Product> productList ;
+public class ProductServiceImpl implements PruductService {
+    List<Product> productList = new ArrayList();
 
     public ProductServiceImpl() {
-        productList = new ArrayList<>();
-        productList.add(new Product(1,"TIVI",300));
-        productList.add(new Product(2,"TULANH",300));
-        productList.add(new Product(3,"DIENTHOAI",300));
-
+        this.productList.add(new Product(1, "TIVI", 300));
+        this.productList.add(new Product(2, "TULANH", 300));
+        this.productList.add(new Product(3, "DIENTHOAI", 300));
     }
 
-
-
-    @Override
     public List<Product> findAll() {
-        return productList;
+        return this.productList;
     }
 
-    @Override
     public void save(Product product) {
-        productList.add(product);
+        this.productList.add(product);
     }
 
-    @Override
     public int findIndexByid(int id) {
         int index = -1;
-        for (int i = 0; i < productList.size(); i++) {
-            if(productList.get(i).getId()==id){
-                index=i;
+
+        for(int i = 0; i < this.productList.size(); ++i) {
+            if (((Product)this.productList.get(i)).getId() == id) {
+                index = i;
             }
         }
+
         return index;
     }
 
-    @Override
     public Product findByid(int id) {
-        for (Product product: productList
-             ) {
-            if(product.getId()== id) return product;
-        }
-        return null;
+        Iterator var2 = this.productList.iterator();
+
+        Product product;
+        do {
+            if (!var2.hasNext()) {
+                return null;
+            }
+
+            product = (Product)var2.next();
+        } while(product.getId() != id);
+
+        return product;
     }
 
-    @Override
     public List<Product> finByName(String name) {
         return null;
     }
 
-    @Override
     public void update(int id, Product product) {
-        int indexOf = findIndexByid(id);
-            productList.set(indexOf,product);
-
+        int indexOf = this.findIndexByid(id);
+        this.productList.set(indexOf, product);
     }
 
-    @Override
     public void delete(int id) {
-
+        int intdexOf = this.findIndexByid(id);
+        this.productList.remove(intdexOf);
     }
 }
